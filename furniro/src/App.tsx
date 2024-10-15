@@ -1,9 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Navbar from './components/Navbar';
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div>
-      <h1>Template Inicial - Jeferson Smith!</h1>
+    <div className="App">
+      <Navbar />
+      <Outlet />
     </div>
   );
 }

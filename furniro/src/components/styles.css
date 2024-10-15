@@ -1,0 +1,77 @@
+/* styles.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6rem;
+    width: 100%;
+    background-color: white;
+    padding: 0 4rem;
+  }
+  
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+  }
+  
+  .nav-item {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-item:hover {
+    color: #555;
+  }
+  
+  .icon-links {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+  }
+  
+  .icon-links img {
+    width: 24px;
+    height: 24px;
+  }
+
+/* styles.css */
+
+.header-home {
+    position: relative;
+  }
+  
+  .background-img {
+    width: 100%;
+  }
+  
+  .overlay-box {
+    width: 543px;
+    height: 343px;
+    position: absolute;
+    bottom: 0;
+    left: 70%; /* Mova o box mais para a direita ajustando o valor */
+    transform: translateX(-20%); /* Ajuste fino para centralizar mais à direita */
+    background-color: #f1f1f1; /* Substitua pelo valor desejado para a cor de fundo */
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+  }
+  
