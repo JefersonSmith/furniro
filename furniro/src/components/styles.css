@@ -70,7 +70,7 @@
     bottom: 0;
     left: 70%; /* Mova o box mais para a direita ajustando o valor */
     transform: translateX(-20%); /* Ajuste fino para centralizar mais à direita */
-    background-color: #f1f1f1; /* Substitua pelo valor desejado para a cor de fundo */
+    background-color: #fff3e3; /* Substitua pelo valor desejado para a cor de fundo */
     border-radius: 10px 10px 0 0;
     padding: 1rem;
   }
