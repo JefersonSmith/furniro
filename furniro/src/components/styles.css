@@ -111,3 +111,80 @@
   background-color: #f1f1f1; /* Substitua pela cor equivalente a bg-secondary-200 */
   padding: 6rem 0; /* Equivalente a py-24 */
 }
+
+/* Footer */
+
+.footer {
+  padding: 3rem 6rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.footer-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.footer-text {
+  color: #6b7280; /* Substitua pela cor equivalente a "text-secondaryText" */
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.footer-heading {
+  color: #6b7280; /* Cor do texto secundário */
+}
+
+.footer-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-newsletter {
+  margin-bottom: 3rem;
+}
+
+.footer-input {
+  padding-bottom: 2px;
+  margin-right: 1rem;
+  border-bottom: 2px solid #ccc;
+  transition: all 0.2s;
+}
+
+.footer-input:focus {
+  border-bottom: 2px solid #555;
+  outline: none;
+}
+
+.footer-button {
+  text-decoration: underline;
+  transition: font-weight 0.2s ease-in-out;
+}
+
+.footer-button:hover {
+  font-weight: 600;
+}
+
+.footer-divider {
+  margin: 2rem 0;
+}
+
+.footer-copyright {
+  text-align: left;
+  margin-top: 1rem;
+}
