@@ -1,4 +1,4 @@
-/* styles.css */
+/* Navbar */
 
 .navbar {
     display: flex;
@@ -53,7 +53,7 @@
     height: 24px;
   }
 
-/* styles.css */
+/* Header */
 
 .header-home {
     position: relative;
@@ -64,14 +64,50 @@
   }
   
   .overlay-box {
-    width: 543px;
+    width: 743px;
     height: 343px;
     position: absolute;
     bottom: 0;
-    left: 70%; /* Mova o box mais para a direita ajustando o valor */
+    left: 60%; /* Mova o box mais para a direita ajustando o valor */
     transform: translateX(-20%); /* Ajuste fino para centralizar mais à direita */
     background-color: #fff3e3; /* Substitua pelo valor desejado para a cor de fundo */
     border-radius: 10px 10px 0 0;
     padding: 1rem;
   }
   
+  /* Advantage */
+
+.advantage {
+  display: flex;
+  gap: 1rem;
+}
+
+.advantage-icon {
+  /* Se precisar de um tamanho específico para o ícone, defina aqui */
+  width: 50px; /* Ajuste conforme necessário */
+}
+
+.advantage-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.advantage-title {
+  font-weight: 600;
+  font-size: 2rem; /* Equivalente ao text-2xl */
+}
+
+.advantage-subtitle {
+  font-size: 1.25rem; /* Equivalente ao text-xl */
+  color: #6b7280; /* Substitua este valor pela cor de "secondaryText" */
+}
+
+/* Advantage Section */
+
+.advantages-section {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem; /* Equivalente a gap-14 */
+  background-color: #f1f1f1; /* Substitua pela cor equivalente a bg-secondary-200 */
+  padding: 6rem 0; /* Equivalente a py-24 */
+}

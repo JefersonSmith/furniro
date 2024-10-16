@@ -4,10 +4,11 @@ import trophy from "../assets/icon/trophy.svg";
 import guarantee from "../assets/icon/guarantee.svg";
 import shipping from "../assets/icon/shipping.svg";
 import customerSupport from "../assets/icon/customer-support.svg";
+import './styles.css'; 
 
 const AdvantagesSection: React.FC = () => {
   return (
-    <div className="flex justify-center gap-14 bg-secondary-200 py-24">
+    <div className="advantages-section">
       <Advantage
         icone={trophy}
         title="High Quality"
