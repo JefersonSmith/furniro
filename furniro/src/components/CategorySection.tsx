@@ -1,10 +1,33 @@
 import React from "react";
-const CategorySection = () => {
+import { useCategories } from "../hooks/useCategories";
+import { UseCategoriesResult } from "../interface/UseCategoriesResponse";
+import CardCategory from "./CardCategory";
+import Loading from "./Loading";
+import './styles.css'; 
+
+const CategorySection: React.FC = () => {
+  const { categories, error, loading }: UseCategoriesResult = useCategories();
+
   return (
-    <div className="flex flex-col items-center">
-      <h2 className="font-bold text-3xl py-24">Browse The Range</h2>
-      <div></div>
+    <div className="category-section">
+      <h2 className="section-title">Browse The Range</h2>
+      <div className="category-grid">
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <p>An error has occurred! Please reload the page</p>
+        ) : (
+          categories.map((category) => (
+            <CardCategory
+              key={category.id}
+              category={category.name}
+              imageLink={category.imageLink}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
+
 export default CategorySection;

@@ -1,0 +1,29 @@
+/* home.css */
+
+.products-heading {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+  }
+  
+  .show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+  
+  .show-more-btn {
+    color: var(--primary-color); /* Substitua por sua variável de cor */
+    font-weight: 600;
+    border: 2px solid var(--primary-color); /* Substitua por sua variável de cor */
+    padding: 0.75rem 4rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .show-more-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
