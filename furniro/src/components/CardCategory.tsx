@@ -3,20 +3,21 @@ import './styles.css';
 
 interface CardCategoryProps {
   category: string;
-  imageLink: string;
+  image_link: string;
 }
 
 const CardCategory: React.FC<CardCategoryProps> = ({
   category,
-  imageLink,
+  image_link,
 }: CardCategoryProps) => {
+  console.log("Image link:", image_link);
   const href = `/shop/${category.toLowerCase()}`;
   return (
     <div className="card-category">
       <a href={href}>
         <img
           className="card-category-image"
-          src={imageLink}
+          src={image_link}
           alt={category}
         />
       </a>

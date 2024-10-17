@@ -21,7 +21,7 @@ const CategorySection: React.FC = () => {
             <CardCategory
               key={category.id}
               category={category.name}
-              imageLink={category.imageLink}
+              image_link={category.image_link}
             />
           ))
         )}
