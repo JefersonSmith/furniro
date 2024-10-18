@@ -13,7 +13,7 @@ interface CardProductProps {
   price: number;
   discountPrice: number;
   discountPercent: number;
-  isNew: boolean;
+  is_new: boolean;
 }
 
 const CardProduct: React.FC<CardProductProps> = ({
@@ -24,7 +24,7 @@ const CardProduct: React.FC<CardProductProps> = ({
   price,
   discountPrice,
   discountPercent,
-  isNew,
+  is_new,
 }: CardProductProps) => {
   return (
     <div className="card-product">
@@ -49,7 +49,7 @@ const CardProduct: React.FC<CardProductProps> = ({
       </div>
 
       <div className="card-content">
-        {isNew && <div className="badge new-badge">New</div>}
+        {is_new && <div className="badge new-badge">New</div>}
         {discountPercent && (
           <div className="badge discount-badge">-{discountPercent}%</div>
         )}
