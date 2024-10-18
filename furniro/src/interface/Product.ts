@@ -2,15 +2,15 @@ export interface Product {
     id: number;
     name: string;
     sku: string;
-    categoryId: number;
+    category: number;
     description: string;
-    largeDescription: string;
+    large_description: string;
     price: number;
-    discountPrice: number;
-    discountPercent: number;
-    isNew: boolean;
-    imageLink: string;
-    otherImagesLink: string[];
-    createdDate: string;
-    updatedDate: string;
+    discount_price: number;
+    discount_percent: number;
+    is_new: boolean;
+    image_link: string;
+    other_images_link: string[];
+    created_date: string;
+    updated_date: string;
   }

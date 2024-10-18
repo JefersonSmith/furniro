@@ -24,12 +24,12 @@ const ProductsSection: React.FC<ProductSectionProps> = ({ limit }: ProductSectio
               key={product.id}
               id={product.id}
               name={product.name}
-              imageLink={product.imageLink}
-              category={product.categoryId}
+              imageLink={product.image_link}
+              category={product.category}
               price={product.price}
-              discountPrice={product.discountPrice}
-              discountPercent={product.discountPercent}
-              isNew={product.isNew}
+              discountPrice={product.discount_price}
+              discountPercent={product.discount_percent}
+              isNew={product.is_new}
             />
           ))
         )}
