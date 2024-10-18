@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import arrowIcon from "../assets/icon/arrow-down-alt2.svg";
 import gridRoundIcon from "../assets/icon/grid-big-round.svg";
 import viewListIcon from "../assets/icon/view-list.svg";
-import ApllayBtn from "../components/ApplyBtn";
+import ApplyBtn from "../components/ApplyBtn";
 import FilterModal from "../components/FilterModal";
 import { ModalFilterData } from "../interface/ModalFilterData";
 interface FormData {
@@ -137,7 +137,7 @@ const Shop: React.FC = () => {
               <option value="lowToHigh">Low to high</option>
             </select>
           </div>
-          <ApllayBtn handleSubmit={handleSubmit} />
+          <ApplyBtn handleSubmit={handleSubmit} />
         </form>
       </div>
       <ProductsSection

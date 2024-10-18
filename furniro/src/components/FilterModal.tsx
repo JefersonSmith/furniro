@@ -57,7 +57,17 @@ const FilterModal: React.FC<FilterModalProps> = ({ onUpdate }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    onUpdate(formData);
+    
+    // Converte o ID da categoria em um nome da categoria
+    const selectedCategory = categories.find(cat => cat.id === parseInt(formData.category));
+    
+    // Atualiza o formData com o nome da categoria se encontrado
+    const updatedFormData = {
+      ...formData,
+      category: selectedCategory ? selectedCategory.name : "", // Usa o nome da categoria
+    };
+    
+    onUpdate(updatedFormData);
   };
 
   return (
@@ -108,11 +118,11 @@ const FilterModal: React.FC<FilterModalProps> = ({ onUpdate }) => {
           <div className="filter-checkbox">
             <input
               type="checkbox"
-              name="isNew"
-              id="isNew"
+              name="is_new"
+              id="is_new"
               onChange={handleChange}
             />
-            <label htmlFor="isNew">New products</label>
+            <label htmlFor="is_new">New products</label>
           </div>
 
           <div className="filter-button-container">
