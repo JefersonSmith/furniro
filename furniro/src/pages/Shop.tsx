@@ -11,7 +11,7 @@ import ApplyBtn from "../components/ApplyBtn";
 import FilterModal from "../components/FilterModal";
 import { ModalFilterData } from "../interface/ModalFilterData";
 import { useCategoryById } from "../hooks/useCategoryById";
-import './shop.css'; // Import your CSS file
+import "./shop.css"; // Import your CSS file
 
 interface FormData {
   showCount: number;
@@ -37,7 +37,9 @@ const Shop: React.FC = () => {
 
   useEffect(() => {
     setCategory(
-      modalFilterData?.category ? parseInt(modalFilterData?.category) : undefined
+      modalFilterData?.category
+        ? parseInt(modalFilterData?.category)
+        : undefined
     );
     setMaxPrice(
       modalFilterData?.maxPrice ? +modalFilterData?.maxPrice : undefined
@@ -49,7 +51,9 @@ const Shop: React.FC = () => {
     setModalFilterData(data);
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     const newValue = name === "showCount" ? parseInt(value, 10) : value;
     setFormData((prevData) => ({
@@ -82,92 +86,95 @@ const Shop: React.FC = () => {
   };
 
   return (
-<div>
-  <div className="shop-header">
-    <img className="shop-header__image" src={shopImage} alt="" />
-    <div className="shop-header__content">
-      <h1 className="shop-title">Shop</h1>
-      <span className="shop-breadcrumb">
-        <Link className="breadcrumb__link" to={"/"}>
-          Home
-        </Link>
-        <img src={arrowIcon} alt="arrow" />
-        <p>Shop</p>
-      </span>
-    </div>
-  </div>
-  <div className="shop-controls">
-    <div className="controls-left">
-      <FilterModal onUpdate={handleModalFilterData} />
-      <button className="view-button">
-        <img src={gridRoundIcon} alt="grid view" />
-      </button>
-      <button className="view-button">
-        <img src={viewListIcon} alt="list view" />
-      </button>
-      <div className="results-info">
-        Showing 1–{limit} of 32 results
+    <div>
+      <div className="shop-header">
+        <img className="shop-header__image" src={shopImage} alt="" />
+        <div className="shop-header__content">
+          <h1 className="shop-title">Shop</h1>
+          <span className="shop-breadcrumb">
+            <Link className="breadcrumb__link" to={"/"}>
+              Home
+            </Link>
+            <img src={arrowIcon} alt="arrow" />
+            <p>Shop</p>
+          </span>
+        </div>
       </div>
-    </div>
-    <form className="controls-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label className="form-label" htmlFor="showCount">Show</label>
-        <input
-          onChange={handleInputChange}
-          className="input-number"
-          type="number"
-          name="showCount"
-          id="showCount"
-          placeholder="16"
-          min="1"
-          max="99"
-          maxLength={2}
-          onInput={(e) => {
-            if (e.currentTarget.value.length > 2) {
-              e.currentTarget.value = e.currentTarget.value.slice(0, 2);
-            }
-          }}
-        />
+      <div className="shop-controls">
+        <div className="controls-left">
+          <FilterModal onUpdate={handleModalFilterData} />
+          <button className="view-button">
+            <img src={gridRoundIcon} alt="grid view" />
+          </button>
+          <button className="view-button">
+            <img src={viewListIcon} alt="list view" />
+          </button>
+          <div className="results-info">Showing 1–{limit} of 32 results</div>
+        </div>
+        <form className="controls-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="showCount">
+              Show
+            </label>
+            <input
+              onChange={handleInputChange}
+              className="input-number"
+              type="number"
+              name="showCount"
+              id="showCount"
+              placeholder="16"
+              min="1"
+              max="99"
+              maxLength={2}
+              onInput={(e) => {
+                if (e.currentTarget.value.length > 2) {
+                  e.currentTarget.value = e.currentTarget.value.slice(0, 2);
+                }
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="sortBy">
+              Sort by
+            </label>
+            <select
+              className="sort-select"
+              name="sortBy"
+              id="sortBy"
+              onChange={(e) => {
+                handleInputChange(e); // Captura o valor do select
+                handleSubmit(e); // Aciona a ordenação automaticamente
+              }}
+            >
+              <option value="default">Default</option>
+              <option value="az">A - Z</option>
+              <option value="highToLow">High to low </option>
+              <option value="lowToHigh">Low to high</option>
+            </select>
+          </div>
+        </form>
       </div>
-      <div className="form-group">
-        <label className="form-label" htmlFor="sortBy">Sort by</label>
-        <select
-          className="input-select"
-          name="sortBy"
-          id="sortBy"
-          onChange={handleInputChange}
-        >
-          <option value="default">Default</option>
-          <option value="az">A - Z</option>
-          <option value="highToLow">High to low</option>
-          <option value="lowToHigh">Low to high</option>
-        </select>
-      </div>
-      <ApplyBtn handleSubmit={handleSubmit} />
-    </form>
-  </div>
 
-  <ProductsSection
-    isNew={is_new}
-    category={category}
-    maxPrice={maxPrice}
-    limit={limit}
-    sortBy={sortBy}
-    sortDirection={sortDirection}
-  />
+      <ProductsSection
+        isNew={is_new}
+        category={category}
+        maxPrice={maxPrice}
+        limit={limit}
+        sortBy={sortBy}
+        sortDirection={sortDirection}
+      />
 
-  {limit < 32 && (
-    <div className="load-more">
-      <button onClick={handleLoadMore} className="load-more-button">
-        Show More
-      </button>
+      {limit < 32 && (
+        <div className="load-more">
+          <button onClick={handleLoadMore} className="load-more-button">
+            Show More
+          </button>
+        </div>
+      )}
+
+      <AdvantageSection />
+      <Footer />
     </div>
-  )}
-
-  <AdvantageSection />
-  <Footer />
-</div>
-
   );
 };
 

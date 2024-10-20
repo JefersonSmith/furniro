@@ -5,6 +5,7 @@
     margin-bottom: 2rem;
     height: 5rem;
     background-color: #f9f1e7;
+    
   }
   
   .breadcrumb-current {
@@ -13,16 +14,34 @@
     display: flex;
     align-items: center;
   }
+
+  .breadcrumb span {
+    margin-right: 10px; /* Ajuste conforme necessário */
+  }
+  
+  .breadcrumb img {
+    margin: 0 10px; /* Ajuste conforme necessário */
+  }
   
   .product-details {
     display: flex;
     justify-content: center;
     gap: 5rem;
+        margin-right: 15px;
+
   }
   
   .product-images {
     display: flex;
   }
+
+  .thumbnails-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 15px;
+  }
+  
   
   .product-thumbnails {
     display: flex;
@@ -34,6 +53,7 @@
     width: 5rem;
     height: 5rem;
     object-fit: cover;
+    border-radius: 10%;
   }
   
   .product-main-image {

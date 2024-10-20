@@ -235,7 +235,7 @@
 
 .card-product {
   width: 285px;
-  height: 470px;
+  height: 550px;
   position: relative;
 }
 
@@ -299,7 +299,7 @@
 
 .card-content {
   width: 285px;
-  height: 470px;
+  height: 550px;
   background-color: #f3f4f6; /* Light gray background */
   position: relative;
 }
@@ -391,6 +391,9 @@
   padding: 0.5rem;
   transition: background-color 0.3s;
   cursor: pointer;
+  background-color: transparent; /* Define o background transparente */
+  border: none;
+
 }
 
 .filter-button:hover {

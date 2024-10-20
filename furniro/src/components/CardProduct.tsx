@@ -14,6 +14,7 @@ interface CardProductProps {
   discountPrice: number;
   discountPercent: number;
   is_new: boolean;
+  description: string;
 }
 
 const CardProduct: React.FC<CardProductProps> = ({
@@ -25,6 +26,7 @@ const CardProduct: React.FC<CardProductProps> = ({
   discountPrice,
   discountPercent,
   is_new,
+  description
 }: CardProductProps) => {
   return (
     <div className="card-product">
@@ -58,7 +60,7 @@ const CardProduct: React.FC<CardProductProps> = ({
         </div>
         <div className="card-details">
           <h2 className="product-name">{name}</h2>
-          <p className="product-description">Stylish cafe chair</p>
+          <p className="product-description">{description}</p>
           <div className="product-pricing">
             <p className="current-price">
               Rp {discountPrice ? discountPrice : price}
