@@ -18,11 +18,7 @@ const CategorySection: React.FC = () => {
           <p>An error has occurred! Please reload the page</p>
         ) : (
           categories.map((category) => (
-            <CardCategory
-              key={category.id}
-              category={category.name}
-              image_link={category.image_link}
-            />
+            <CardCategory key={category.id} id={category.id} category={category.name} image_link={category.image_link}/> 
           ))
         )}
       </div>

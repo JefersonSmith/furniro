@@ -10,7 +10,9 @@ interface FilterModalProps {
   onUpdate: (data: ModalFilterData) => void;
 }
 
-const FilterModal: React.FC<FilterModalProps> = ({ onUpdate }) => {
+const FilterModal: React.FC<FilterModalProps> = ({
+  onUpdate,
+}: FilterModalProps) => {
   const { categories }: UseCategoriesResult = useCategories();
 
   // Modal state management
@@ -57,17 +59,14 @@ const FilterModal: React.FC<FilterModalProps> = ({ onUpdate }) => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    
-    // Converte o ID da categoria em um nome da categoria
-    const selectedCategory = categories.find(cat => cat.id === parseInt(formData.category));
-    
-    // Atualiza o formData com o nome da categoria se encontrado
+  
+    // Não converter o ID da categoria para o nome, mas enviar o ID diretamente
     const updatedFormData = {
       ...formData,
-      category: selectedCategory ? selectedCategory.name : "", // Usa o nome da categoria
+      category: formData.category,  // Mantém o ID da categoria
     };
-    
-    onUpdate(updatedFormData);
+  
+    onUpdate(updatedFormData); // Envia o ID da categoria
   };
 
   return (
@@ -104,16 +103,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ onUpdate }) => {
             </select>
           </div>
 
-          <div className="filter-field">
-            <label htmlFor="maxPrice">Maximum price:</label>
-            <input
-              name="maxPrice"
-              id="maxPrice"
-              type="number"
-              onChange={handleChange}
-              className="filter-input"
-            />
-          </div>
+
 
           <div className="filter-checkbox">
             <input

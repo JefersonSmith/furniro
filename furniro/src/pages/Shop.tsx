@@ -3,46 +3,59 @@ import AdvantageSection from "../components/AdvantagesSection";
 import Footer from "../components/Footer";
 import ProductsSection from "../components/ProductsSection";
 import shopImage from "../assets/shop-image.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import arrowIcon from "../assets/icon/arrow-down-alt2.svg";
 import gridRoundIcon from "../assets/icon/grid-big-round.svg";
 import viewListIcon from "../assets/icon/view-list.svg";
 import ApplyBtn from "../components/ApplyBtn";
 import FilterModal from "../components/FilterModal";
 import { ModalFilterData } from "../interface/ModalFilterData";
+import { useCategoryById } from "../hooks/useCategoryById";
+import './shop.css'; // Import your CSS file
+
 interface FormData {
   showCount: number;
   sortBy: string;
 }
+
 const Shop: React.FC = () => {
+  const location = useLocation();
   const [modalFilterData, setModalFilterData] = useState<ModalFilterData>();
   const [is_new, setIsNew] = useState<boolean | undefined>(false);
-  const [category, setCategory] = useState<number | undefined>();
+  const [category, setCategory] = useState<number | undefined>(location.state);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
-  const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(16);
   const [sortBy, setSortBy] = useState<string>("");
   const [sortDirection, setSortDirection] = useState<string>("DESC");
+  const [page, setPage] = useState<number>(1);
+  
+  const categoryName = useCategoryById(category?.toString());
+  
+  const handlePageChange = (page: number) => {
+    setPage(page);
+  };
+  
   const [formData, setFormData] = useState<FormData>({
-    showCount: 16, // Valor inicial para o campo de entrada
-    sortBy: "default", // Valor inicial para o select
+    showCount: 16, 
+    sortBy: "default", 
   });
+  
   useEffect(() => {
     setCategory(
       modalFilterData?.category
         ? parseInt(modalFilterData?.category)
-        : undefined
-    );
+        : undefined );
     setMaxPrice(
       modalFilterData?.maxPrice ? +modalFilterData?.maxPrice : undefined
     );
     setIsNew(modalFilterData?.is_new);
     
   }, [category, is_new, maxPrice, modalFilterData, limit, formData]);
+  
   const handleModalFilterData = (data: ModalFilterData) => {
     setModalFilterData(data);
   };
-  // handle form show and sort by
+  
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -53,6 +66,7 @@ const Shop: React.FC = () => {
       [name]: newValue,
     }));
   };
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (formData?.sortBy === "az") {

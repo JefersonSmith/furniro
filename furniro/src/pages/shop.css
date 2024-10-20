@@ -1,0 +1,100 @@
+/* Shop.css */
+
+.relative {
+    position: relative;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .h-full {
+    height: 100%;
+  }
+  
+  .absolute {
+    position: absolute;
+  }
+  
+  .text-5xl {
+    font-size: 3rem; /* Adjust as needed */
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .hover\:underline:hover {
+    text-decoration: underline;
+  }
+  
+  .bg-secondary-100 {
+    background-color: #f0f0f0; /* Replace with your color */
+  }
+  
+  .mb-16 {
+    margin-bottom: 4rem; /* Adjust as needed */
+  }
+  
+  .px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  
+  .gap-5 {
+    gap: 1.25rem; /* Adjust as needed */
+  }
+  
+  .p-1 {
+    padding: 0.25rem;
+  }
+  
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .border-l-2 {
+    border-left: 2px solid;
+  }
+  
+  .h-9 {
+    height: 2.25rem; /* Adjust as needed */
+  }
+  
+  .border-gray-400 {
+    border-color: #cbd5e1; /* Replace with your color */
+  }
+  
+  .text-xl {
+    font-size: 1.25rem; /* Adjust as needed */
+  }
+  
+  .size-11 {
+    width: 2.75rem; /* Adjust as needed */
+  }
+  
+  .remove-arrow {
+    -moz-appearance: textfield;
+  }
+  
+  .remove-arrow::-webkit-inner-spin-button,
+  .remove-arrow::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .h-10 {
+    height: 2.5rem; /* Adjust as needed */
+  }

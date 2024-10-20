@@ -3,6 +3,7 @@ import { UseProductsResult } from "../interface/UseProductsResponse";
 import { Product } from "../interface/Product";
 import { getProducts } from "../api/products";
 import { FetchProductsParams } from "../interface/FetchProductsParams";
+
 export const useProducts = ({
   page,
   limit,
@@ -16,6 +17,7 @@ export const useProducts = ({
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const loadProducts = async () => {
       setLoading(true);
@@ -30,7 +32,10 @@ export const useProducts = ({
           sortBy,
           sortDirection,
         });
-        setProducts(data);
+        
+        // Limit the number of products to the specified limit
+        setProducts(data.slice(0, limit)); // Ensure only 'limit' number of products are set
+
         setLoading(false);
       } catch (error: unknown) {
         if (error instanceof Error) {

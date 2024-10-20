@@ -1,16 +1,20 @@
 import React from "react";
-interface ApllayBtnProps {
+import './styles.css'; // Importando o CSS
+
+interface ApplyBtnProps {
   handleSubmit: (event: React.FormEvent) => void;
 }
-const ApplyBtn: React.FC<ApllayBtnProps> = ({ handleSubmit }) => {
+
+const ApplyBtn: React.FC<ApplyBtnProps> = ({ handleSubmit }) => {
   return (
     <button
       type="button"
       onClick={handleSubmit}
-      className="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded"
+      className="apply-btn"
     >
       Apply
     </button>
   );
 };
+
 export default ApplyBtn;

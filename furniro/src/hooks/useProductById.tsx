@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import { UseProductByIdResult } from "../interface/UseProductByIdResponde";
 import { Product } from "../interface/Product";
-import { getProductById } from "../api/products";
-export const useProductsById = (id: number): UseProductByIdResult => {
+import { fetchProductById } from "../api/products";
+
+export const useProductById = (id: string | undefined): UseProductByIdResult => {
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const loadProduct = async () => {
       try {
-        const data = await getProductById(id);
+        const data = await fetchProductById(id);
+        
         setProduct(data);
         setLoading(false);
       } catch (error: unknown) {
@@ -20,7 +23,9 @@ export const useProductsById = (id: number): UseProductByIdResult => {
         }
       }
     };
+
     loadProduct();
   }, [id]);
+
   return { product, error, loading };
 };

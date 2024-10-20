@@ -67,3 +67,18 @@ export const getProductById = async (id: number): Promise<Product> => {
     }
   }
 };
+export const fetchProductById = async (id: string | undefined): Promise<Product> => {
+  try {
+    const response = await API.get<Product>(`/product/${id}`);
+    
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(`Error fetching product by ID ${id}:`, error.message);
+      throw error;
+    } else {
+      console.error(`Unknown error fetching product by ID ${id}.`);
+      throw new Error("An unknown error occurred while fetching the product.");
+    }
+  }
+};

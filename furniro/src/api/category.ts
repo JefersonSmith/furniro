@@ -15,3 +15,19 @@ export const getCategories = async (): Promise<Category[]> => {
     }
   }
 };
+
+export const fetchCategoryById = async (id: string | undefined): Promise<Category> => {
+  try {
+    const response = await API.get<Category>(`/category/${id}`);
+    
+    return response.data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(`Error fetching category by ID ${id}:`, error.message);
+      throw error;
+    } else {
+      console.error(`Unknown error fetching category by ID ${id}.`);
+      throw new Error("An unknown error occurred while fetching the category.");
+    }
+  }
+};
