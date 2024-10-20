@@ -24,41 +24,32 @@ const Shop: React.FC = () => {
   const [is_new, setIsNew] = useState<boolean | undefined>(false);
   const [category, setCategory] = useState<number | undefined>(location.state);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
-  const [limit, setLimit] = useState<number>(16);
+  const [limit, setLimit] = useState<number>(16); // Limite inicial
   const [sortBy, setSortBy] = useState<string>("");
   const [sortDirection, setSortDirection] = useState<string>("DESC");
-  const [page, setPage] = useState<number>(1);
-  
+
   const categoryName = useCategoryById(category?.toString());
-  
-  const handlePageChange = (page: number) => {
-    setPage(page);
-  };
-  
+
   const [formData, setFormData] = useState<FormData>({
-    showCount: 16, 
-    sortBy: "default", 
+    showCount: 16,
+    sortBy: "default",
   });
-  
+
   useEffect(() => {
     setCategory(
-      modalFilterData?.category
-        ? parseInt(modalFilterData?.category)
-        : undefined );
+      modalFilterData?.category ? parseInt(modalFilterData?.category) : undefined
+    );
     setMaxPrice(
       modalFilterData?.maxPrice ? +modalFilterData?.maxPrice : undefined
     );
     setIsNew(modalFilterData?.is_new);
-    
   }, [category, is_new, maxPrice, modalFilterData, limit, formData]);
-  
+
   const handleModalFilterData = (data: ModalFilterData) => {
     setModalFilterData(data);
   };
-  
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     const newValue = name === "showCount" ? parseInt(value, 10) : value;
     setFormData((prevData) => ({
@@ -66,7 +57,7 @@ const Shop: React.FC = () => {
       [name]: newValue,
     }));
   };
-  
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (formData?.sortBy === "az") {
@@ -82,7 +73,12 @@ const Shop: React.FC = () => {
       setSortBy("");
       setSortDirection("");
     }
-    setLimit(formData?.showCount);
+    setLimit(formData?.showCount); // Atualiza o limite conforme o formulário
+  };
+
+  // Função para carregar mais produtos
+  const handleLoadMore = () => {
+    setLimit((prevLimit) => prevLimit + 16); // Adiciona mais 16 produtos ao limite atual
   };
 
   return (
@@ -110,7 +106,7 @@ const Shop: React.FC = () => {
             <img src={viewListIcon} alt="list view" />
           </button>
           <div className="border-l-2 h-9 border-gray-400 pl-8 flex items-center">
-            Showing 1–16 of 32 results
+            Showing 1–{limit} of 32 results
           </div>
         </div>
         <form className="flex gap-5" onSubmit={handleSubmit}>
@@ -154,6 +150,7 @@ const Shop: React.FC = () => {
           <ApplyBtn handleSubmit={handleSubmit} />
         </form>
       </div>
+
       <ProductsSection
         isNew={is_new}
         category={category}
@@ -162,6 +159,19 @@ const Shop: React.FC = () => {
         sortBy={sortBy}
         sortDirection={sortDirection}
       />
+
+      {/* Botão para carregar mais produtos */}
+      {limit < 32 && ( // Condicional para exibir o botão apenas se houver mais produtos para carregar
+        <div className="flex justify-center my-8">
+          <button
+            onClick={handleLoadMore}
+            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          >
+            Load More
+          </button>
+        </div>
+      )}
+
       <AdvantageSection />
       <Footer />
     </div>
