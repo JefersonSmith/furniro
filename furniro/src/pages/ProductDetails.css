@@ -66,6 +66,7 @@
   .stars {
     display: flex;
     gap: 0.25rem;
+    padding-right: 2rem;
   }
   
   .review {
