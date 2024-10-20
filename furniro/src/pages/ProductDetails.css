@@ -151,13 +151,29 @@
   
   .product-meta {
     display: flex;
-    justify-content: space-between;
+    align-items: center; /* Alinhar os itens verticalmente no centro */
     margin-bottom: 2rem;
+    gap: 2rem; /* Espaçamento entre os itens */
+  }
+
+  .product-meta span {
+    color: #A0AEC0; /* Cor cinza clarinho */
+    margin-bottom: 10px;
+}
+  
+  .meta-left,
+  .meta-right {
+    display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
   }
   
-  .social-icons img {
-    width: 1.5rem;
-    margin-left: 1rem;
+  .meta-right {
+    align-items: flex-start; /* Alinha os itens à esquerda */
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 0.5rem; /* Espaçamento entre os ícones sociais */
   }
   
   .product-description-section {

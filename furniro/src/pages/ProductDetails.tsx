@@ -161,7 +161,7 @@ const ProductDetails: React.FC = () => {
                 </div>
                 <div className="meta-right">
                   <span>: {product?.sku}</span>
-                  <span>: {category?.name}</span>
+                  <span>: Furniture</span>
                   <span>: Sofa, Chair, Home, Shop</span>
                   <div className="social-icons">
                     <img src={facebookIcon} alt="Facebook" />
