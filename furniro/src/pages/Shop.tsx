@@ -82,99 +82,92 @@ const Shop: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="relative flex justify-center items-center">
-        <img className="w-full h-full" src={shopImage} alt="" />
-        <div className="absolute">
-          <h1 className="text-5xl font-semibold">Shop</h1>
-          <span className="flex justify-between">
-            <Link className="font-semibold hover:underline" to={"/"}>
-              Home
-            </Link>
-            <img src={arrowIcon} alt="" />
-            <p>Shop</p>
-          </span>
-        </div>
-      </div>
-      <div className="h-20 bg-secondary-100 mb-16 px-24 flex justify-between items-center">
-        <div className="flex items-center gap-5">
-          <FilterModal onUpdate={handleModalFilterData} />
-          <button className="p-1 hover:bg-orange-200 hover:rounded-md">
-            <img src={gridRoundIcon} alt="grid view" />
-          </button>
-          <button className="p-2 hover:bg-orange-200 hover:rounded-md">
-            <img src={viewListIcon} alt="list view" />
-          </button>
-          <div className="border-l-2 h-9 border-gray-400 pl-8 flex items-center">
-            Showing 1–{limit} of 32 results
-          </div>
-        </div>
-        <form className="flex gap-5" onSubmit={handleSubmit}>
-          <div>
-            <label className="mr-4 text-xl" htmlFor="showCount">
-              Show
-            </label>
-            <input
-              onChange={handleInputChange}
-              className="size-11 px-3 remove-arrow"
-              type="number"
-              name="showCount"
-              id="showCount"
-              placeholder="16"
-              min="1"
-              max="99"
-              maxLength={2}
-              onInput={(e) => {
-                if (e.currentTarget.value.length > 2) {
-                  e.currentTarget.value = e.currentTarget.value.slice(0, 2);
-                }
-              }}
-            />
-          </div>
-          <div>
-            <label className="mr-4 text-xl" htmlFor="sortBy">
-              Sort by
-            </label>
-            <select
-              className="h-10 px-3"
-              name="sortBy"
-              id="sortBy"
-              onChange={handleInputChange}
-            >
-              <option value="default">Default</option>
-              <option value="az">A - Z</option>
-              <option value="highToLow">High to low </option>
-              <option value="lowToHigh">Low to high</option>
-            </select>
-          </div>
-          <ApplyBtn handleSubmit={handleSubmit} />
-        </form>
-      </div>
-
-      <ProductsSection
-        isNew={is_new}
-        category={category}
-        maxPrice={maxPrice}
-        limit={limit}
-        sortBy={sortBy}
-        sortDirection={sortDirection}
-      />
-
-      {/* Botão para carregar mais produtos */}
-      {limit < 32 && ( // Condicional para exibir o botão apenas se houver mais produtos para carregar
-        <div className="flex justify-center my-8">
-          <button
-            onClick={handleLoadMore}
-            className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
-          >
-            Load More
-          </button>
-        </div>
-      )}
-
-      <AdvantageSection />
-      <Footer />
+<div>
+  <div className="shop-header">
+    <img className="shop-header__image" src={shopImage} alt="" />
+    <div className="shop-header__content">
+      <h1 className="shop-title">Shop</h1>
+      <span className="shop-breadcrumb">
+        <Link className="breadcrumb__link" to={"/"}>
+          Home
+        </Link>
+        <img src={arrowIcon} alt="arrow" />
+        <p>Shop</p>
+      </span>
     </div>
+  </div>
+  <div className="shop-controls">
+    <div className="controls-left">
+      <FilterModal onUpdate={handleModalFilterData} />
+      <button className="view-button">
+        <img src={gridRoundIcon} alt="grid view" />
+      </button>
+      <button className="view-button">
+        <img src={viewListIcon} alt="list view" />
+      </button>
+      <div className="results-info">
+        Showing 1–{limit} of 32 results
+      </div>
+    </div>
+    <form className="controls-form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label className="form-label" htmlFor="showCount">Show</label>
+        <input
+          onChange={handleInputChange}
+          className="input-number"
+          type="number"
+          name="showCount"
+          id="showCount"
+          placeholder="16"
+          min="1"
+          max="99"
+          maxLength={2}
+          onInput={(e) => {
+            if (e.currentTarget.value.length > 2) {
+              e.currentTarget.value = e.currentTarget.value.slice(0, 2);
+            }
+          }}
+        />
+      </div>
+      <div className="form-group">
+        <label className="form-label" htmlFor="sortBy">Sort by</label>
+        <select
+          className="input-select"
+          name="sortBy"
+          id="sortBy"
+          onChange={handleInputChange}
+        >
+          <option value="default">Default</option>
+          <option value="az">A - Z</option>
+          <option value="highToLow">High to low</option>
+          <option value="lowToHigh">Low to high</option>
+        </select>
+      </div>
+      <ApplyBtn handleSubmit={handleSubmit} />
+    </form>
+  </div>
+
+  <ProductsSection
+    isNew={is_new}
+    category={category}
+    maxPrice={maxPrice}
+    limit={limit}
+    sortBy={sortBy}
+    sortDirection={sortDirection}
+  />
+
+  {limit < 32 && (
+    <div className="load-more">
+      <button onClick={handleLoadMore} className="load-more-button">
+        Show More
+      </button>
+    </div>
+  )}
+
+  <AdvantageSection />
+  <Footer />
+</div>
+
   );
 };
 

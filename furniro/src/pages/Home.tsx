@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       <h2 className="products-heading">Our Products</h2>
       <ProductsSection limit={8} />
       <div className="show-more-container">
-        <Link className="show-more-btn" to={"/shop"}>
+        <Link className="load-more-button" to={"/shop"}>
           Show More
         </Link>
       </div>
