@@ -4,7 +4,7 @@
     padding-left: 6rem;
     margin-bottom: 2rem;
     height: 5rem;
-    background-color: #e2e8f0;
+    background-color: #f9f1e7;
   }
   
   .breadcrumb-current {
@@ -94,11 +94,13 @@
   .size-btn {
     padding: 0.75rem 1rem;
     border: 1px solid #cbd5e0;
-    background-color: #f7fafc;
+    border-radius: 10px;
+    background-color: #f9f1e7;
+    width: 3rem;
   }
   
   .size-btn.active {
-    background-color: #4a5568;
+    background-color: #b88e2f;
     color: white;
   }
   
