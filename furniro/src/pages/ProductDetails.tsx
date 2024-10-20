@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProductById } from "../hooks/useProductById";
 import Loading from "../components/Loading";
@@ -22,8 +22,18 @@ const ProductDetails: React.FC = () => {
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const [showMoreCount, setShowMoreCount] = useState<number>(1);
   const [limitProducts, setLimitProducts] = useState<number>(4);
+  const [mainImage, setMainImage] = useState<string | undefined>(
+    product?.other_images_link[0]
+  );
+
+useEffect(() => {
+    setMainImage(product?.other_images_link[0]);
+  }, [product?.other_images_link]);
+
   const navigate = useNavigate();
+
   const { category } = useCategoryById(product?.category.toString());
+
 
   const handleShowMore = () => {
     setShowMoreCount(showMoreCount + 1);
@@ -49,18 +59,28 @@ const ProductDetails: React.FC = () => {
       ) : (
         <div>
           <div className="product-details">
-            <div className="product-images">
-              <div className="product-thumbnails">
-                {product?.other_images_link.map((img, i) => (
-                  <img key={i} className="thumbnail" src={img} alt="" />
-                ))}
-              </div>
+          <div className="product-images">
+          <div className="thumbnails-container">
+            {product?.other_images_link.map((img, i) => (
               <img
-                className="product-main-image"
-                src={product?.image_link}
+                key={i}
+                className={`thumbnail ${mainImage === img ? "selected" : ""}`}
+                src={img}
+                onClick={() => setMainImage(img)}
                 alt=""
               />
-            </div>
+            ))}
+          </div>
+
+          <div className="main-image-container">
+            <img
+              className="product-main-image"
+              src={mainImage}
+              alt=""
+            />
+          </div>
+        </div>
+
             <div className="product-info">
               <h2 className="product-name">{product?.name}</h2>
               <h3 className="product-price">Rp {product?.price}</h3>
@@ -161,7 +181,7 @@ const ProductDetails: React.FC = () => {
                 </div>
                 <div className="meta-right">
                   <span>: {product?.sku}</span>
-                  <span>: Furniture</span>
+                  <span>: {category?.name}</span>
                   <span>: Sofa, Chair, Home, Shop</span>
                   <div className="social-icons">
                     <img src={facebookIcon} alt="Facebook" />
