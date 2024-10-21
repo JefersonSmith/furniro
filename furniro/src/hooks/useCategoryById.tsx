@@ -6,13 +6,11 @@ export const useCategoryById = (
   id: string | undefined
 ): UseCategoryByIdResult => {
   const [category, setCategory] = useState<Category>();
-  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     const loadCategory = async () => {
       try {
         const data = await fetchCategoryById(id);
         setCategory(data);
-        setLoading(false);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error(error);

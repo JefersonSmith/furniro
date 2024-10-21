@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import AdvantageSection from "../components/AdvantagesSection";
 import Footer from "../components/Footer";
 import ProductsSection from "../components/ProductsSection";
@@ -21,12 +21,14 @@ interface FormData {
 const Shop: React.FC = () => {
   const location = useLocation();
   const [modalFilterData, setModalFilterData] = useState<ModalFilterData>();
-  const [is_new, setIsNew] = useState<boolean | undefined>(false);
+  const [isNew, setIsNew] = useState<boolean | undefined>(false);
   const [category, setCategory] = useState<number | undefined>(location.state);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
-  const [limit, setLimit] = useState<number>(16); // Limite inicial
+  const [limit, setLimit] = useState<number>(16); // Quantidade de produtos por página
   const [sortBy, setSortBy] = useState<string>("");
   const [sortDirection, setSortDirection] = useState<string>("DESC");
+  const [currentPage, setCurrentPage] = useState<number>(1); // Estado para página atual
+  const [totalResults, setTotalResults] = useState<number>(32); // Suponha 32 resultados totais, pode ser atualizado pela API
 
   const categoryName = useCategoryById(category?.toString());
 
@@ -47,10 +49,8 @@ const Shop: React.FC = () => {
     setIsNew(modalFilterData?.is_new);
   }, [modalFilterData]);
 
-  // Este useEffect irá atualizar a ordenação e o limite automaticamente quando formData mudar
   useEffect(() => {
     const { showCount, sortBy } = formData;
-
     setLimit(showCount); // Atualiza o limite conforme o formulário
 
     if (sortBy === "az") {
@@ -83,10 +83,12 @@ const Shop: React.FC = () => {
     }));
   };
 
-  // Função para carregar mais produtos
-  const handleLoadMore = () => {
-    setLimit((prevLimit) => prevLimit + 16); // Adiciona mais 16 produtos ao limite atual
+  // Funções de paginação
+  const handlePageClick = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
   };
+
+  const totalPages = Math.ceil(totalResults / limit);
 
   return (
     <div>
@@ -103,6 +105,7 @@ const Shop: React.FC = () => {
           </span>
         </div>
       </div>
+
       <div className="shop-controls">
         <div className="controls-left">
           <FilterModal onUpdate={handleModalFilterData} />
@@ -112,7 +115,11 @@ const Shop: React.FC = () => {
           <button className="view-button">
             <img src={viewListIcon} alt="list view" />
           </button>
-          <div className="results-info">Showing 1–{limit} of 32 results</div>
+          <div className="results-info">
+            Showing {(currentPage - 1) * limit + 1}–
+            {Math.min(currentPage * limit, totalResults)} of {totalResults}{" "}
+            results
+          </div>
         </div>
         <form className="controls-form">
           <div className="form-group">
@@ -144,11 +151,11 @@ const Shop: React.FC = () => {
               className="sort-select"
               name="sortBy"
               id="sortBy"
-              onChange={handleInputChange} // Agora apenas chamamos o handleInputChange
+              onChange={handleInputChange}
             >
               <option value="default">Default</option>
               <option value="az">A - Z</option>
-              <option value="highToLow">High to low </option>
+              <option value="highToLow">High to low</option>
               <option value="lowToHigh">Low to high</option>
             </select>
           </div>
@@ -156,21 +163,28 @@ const Shop: React.FC = () => {
       </div>
 
       <ProductsSection
-        isNew={is_new}
+        isNew={isNew}
         category={category}
         maxPrice={maxPrice}
         limit={limit}
+        page={currentPage} // Adiciona a página ao componente
         sortBy={sortBy}
         sortDirection={sortDirection}
       />
 
-      {limit < 32 && (
-        <div className="load-more">
-          <button onClick={handleLoadMore} className="load-more-button">
-            Show More
+      <div className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            className={`pagination-button ${
+              currentPage === index + 1 ? "active" : ""
+            }`}
+            onClick={() => handlePageClick(index + 1)}
+          >
+            {index + 1}
           </button>
-        </div>
-      )}
+        ))}
+      </div>
 
       <AdvantageSection />
       <Footer />
