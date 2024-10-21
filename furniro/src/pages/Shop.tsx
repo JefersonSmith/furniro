@@ -45,7 +45,28 @@ const Shop: React.FC = () => {
       modalFilterData?.maxPrice ? +modalFilterData?.maxPrice : undefined
     );
     setIsNew(modalFilterData?.is_new);
-  }, [category, is_new, maxPrice, modalFilterData, limit, formData]);
+  }, [modalFilterData]);
+
+  // Este useEffect irá atualizar a ordenação e o limite automaticamente quando formData mudar
+  useEffect(() => {
+    const { showCount, sortBy } = formData;
+
+    setLimit(showCount); // Atualiza o limite conforme o formulário
+
+    if (sortBy === "az") {
+      setSortBy("name");
+      setSortDirection("ASC");
+    } else if (sortBy === "highToLow") {
+      setSortBy("price");
+      setSortDirection("DESC");
+    } else if (sortBy === "lowToHigh") {
+      setSortBy("price");
+      setSortDirection("ASC");
+    } else {
+      setSortBy("");
+      setSortDirection("");
+    }
+  }, [formData]);
 
   const handleModalFilterData = (data: ModalFilterData) => {
     setModalFilterData(data);
@@ -60,24 +81,6 @@ const Shop: React.FC = () => {
       ...prevData,
       [name]: newValue,
     }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (formData?.sortBy === "az") {
-      setSortBy("name");
-      setSortDirection("ASC");
-    } else if (formData?.sortBy === "highToLow") {
-      setSortBy("price");
-      setSortDirection("DESC");
-    } else if (formData?.sortBy === "lowToHigh") {
-      setSortBy("price");
-      setSortDirection("ASC");
-    } else if (formData?.sortBy === "default") {
-      setSortBy("");
-      setSortDirection("");
-    }
-    setLimit(formData?.showCount); // Atualiza o limite conforme o formulário
   };
 
   // Função para carregar mais produtos
@@ -111,7 +114,7 @@ const Shop: React.FC = () => {
           </button>
           <div className="results-info">Showing 1–{limit} of 32 results</div>
         </div>
-        <form className="controls-form" onSubmit={handleSubmit}>
+        <form className="controls-form">
           <div className="form-group">
             <label className="form-label" htmlFor="showCount">
               Show
@@ -141,10 +144,7 @@ const Shop: React.FC = () => {
               className="sort-select"
               name="sortBy"
               id="sortBy"
-              onChange={(e) => {
-                handleInputChange(e); // Captura o valor do select
-                handleSubmit(e); // Aciona a ordenação automaticamente
-              }}
+              onChange={handleInputChange} // Agora apenas chamamos o handleInputChange
             >
               <option value="default">Default</option>
               <option value="az">A - Z</option>

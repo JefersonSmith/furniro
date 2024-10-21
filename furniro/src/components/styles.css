@@ -1,57 +1,45 @@
 /* Navbar */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6rem;
-    width: 100%;
-    background-color: white;
-    padding: 0 4rem;
-  }
-  
-  .logo-section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .logo {
-    height: 50px;
-  }
-  
-  .logo-text {
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-  }
-  
-  .nav-item {
-    font-weight: 600;
-    text-decoration: none;
-    color: black;
-    transition: color 0.2s ease;
-  }
-  
-  .nav-item:hover {
-    color: #555;
-  }
-  
-  .icon-links {
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-  }
-  
-  .icon-links img {
-    width: 24px;
-    height: 24px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6rem;
+  width: 100%;
+  background-color: white;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 2rem; /* Ajuste conforme necessário */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0 2rem; /* Ajuste conforme necessário */
+}
+
+.icon-links {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0 2rem; /* Ajuste conforme necessário */
+}
+
+.nav-item {
+  font-weight: 600;
+  text-decoration: none; /* Remove o sublinhado */
+  color: black; /* Cor normal do texto */
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #555; /* Cor quando passar o mouse */
+}
 
 /* Header */
 

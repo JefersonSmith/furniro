@@ -145,30 +145,33 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    border: 1px solid #4a5568;
+    border-radius: 10px;
   }
   
   .quantity-btn {
-    background-color: #4a5568;
-    color: white;
+    background-color: transparent;
     padding: 0.5rem;
     border: none;
     cursor: pointer;
   }
   
   .add-to-cart-btn {
-    background-color: #4a5568;
-    color: white;
+    background-color: transparent;
     padding: 0.75rem 1.5rem;
     border: none;
     cursor: pointer;
+    border: 1px solid #4a5568;
+    border-radius: 10px;
   }
   
   .compare-btn {
     background-color: transparent;
-    color: #4a5568;
     padding: 0.75rem 1.5rem;
-    border: 1px solid #4a5568;
+    border: none;
     cursor: pointer;
+    border: 1px solid #4a5568;
+    border-radius: 10px;
   }
   
   .product-meta {
@@ -212,10 +215,17 @@
   }
   
   .show-more-btn {
-    background-color: #4a5568;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
+    color: #b88e2f;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #b88e2f;
     cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 45px;
+    width: 250px;
+  }
+
+ 
+  .show-more-btn:hover {
+    background-color: #f3d0a4;
   }
   

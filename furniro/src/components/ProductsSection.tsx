@@ -15,16 +15,11 @@ interface ProductSectionProps {
   sortDirection?: string;
 }
 
-const ProductsSection: React.FC<ProductSectionProps> = (props: ProductSectionProps) => {
+const ProductsSection: React.FC<ProductSectionProps> = (
+  props: ProductSectionProps
+) => {
   const { products, loading, error } = useProducts(props);
-
-  // Ordenar produtos com desconto primeiro
-  const sortedProducts = products.slice().sort((a, b) => {
-    if (a.discount_price && !b.discount_price) return -1;
-    if (!a.discount_price && b.discount_price) return 1;
-    return 0;
-  });
-
+  
   return (
     <div className="products-section">
       <div className="products-grid">
@@ -35,7 +30,7 @@ const ProductsSection: React.FC<ProductSectionProps> = (props: ProductSectionPro
         ) : error ? (
           <p>An error has occurred! Please reload the page</p>
         ) : (
-          sortedProducts.map((product) => (
+          products.map((product) => (
             <CardProduct
               key={product.id}
               id={product.id}
