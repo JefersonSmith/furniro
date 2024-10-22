@@ -13,32 +13,32 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin: 0 2rem; /* Ajuste conforme necessário */
+  margin: 0 2rem; 
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 3rem;
-  margin: 0 2rem; /* Ajuste conforme necessário */
+  margin: 0 2rem; 
 }
 
 .icon-links {
   display: flex;
   list-style: none;
   gap: 3rem;
-  margin: 0 2rem; /* Ajuste conforme necessário */
+  margin: 0 2rem; 
 }
 
 .nav-item {
   font-weight: 600;
-  text-decoration: none; /* Remove o sublinhado */
-  color: black; /* Cor normal do texto */
+  text-decoration: none; 
+  color: black; 
   transition: color 0.2s ease;
 }
 
 .nav-item:hover {
-  color: #555; /* Cor quando passar o mouse */
+  color: #555; 
 }
 
 /* Header */
@@ -56,9 +56,9 @@
     height: 343px;
     position: absolute;
     bottom: 0;
-    left: 60%; /* Mova o box mais para a direita ajustando o valor */
-    transform: translateX(-20%); /* Ajuste fino para centralizar mais à direita */
-    background-color: #fff3e3; /* Substitua pelo valor desejado para a cor de fundo */
+    left: 60%; 
+    transform: translateX(-20%); 
+    background-color: #fff3e3; 
     border-radius: 10px 10px 0 0;
     padding: 1rem;
   }
@@ -66,7 +66,7 @@
   /* Apply Button */
 
   .apply-btn {
-    background-color: #f59e0b; /* amber-500 */
+    background-color: #f59e0b; 
     color: white;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -77,7 +77,7 @@
   }
   
   .apply-btn:hover {
-    background-color: #d97706; /* amber-600 */
+    background-color: #d97706; 
   }
 
   /* Card Category */
@@ -115,8 +115,7 @@
 }
 
 .advantage-icon {
-  /* Se precisar de um tamanho específico para o ícone, defina aqui */
-  width: 50px; /* Ajuste conforme necessário */
+  width: 50px; 
 }
 
 .advantage-content {
@@ -126,12 +125,12 @@
 
 .advantage-title {
   font-weight: 600;
-  font-size: 2rem; /* Equivalente ao text-2xl */
+  font-size: 2rem; 
 }
 
 .advantage-subtitle {
-  font-size: 1.25rem; /* Equivalente ao text-xl */
-  color: #6b7280; /* Substitua este valor pela cor de "secondaryText" */
+  font-size: 1.25rem; 
+  color: #6b7280; 
 }
 
 /* Category Section */
@@ -140,19 +139,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3.5rem; /* 14rem */
+  padding-bottom: 3.5rem; 
 }
 
 .section-title {
   font-weight: bold;
-  font-size: 2rem; /* 3xl */
-  padding-top: 6rem; /* 24rem */
-  padding-bottom: 6rem; /* 24rem */
+  font-size: 2rem; 
+  padding-top: 6rem; 
+  padding-bottom: 6rem; 
 }
 
 .category-grid {
   display: flex;
-  gap: 1.25rem; /* 5rem */
+  gap: 1.25rem; 
   text-align: center;
 }
 
@@ -243,7 +242,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.6); /* Cor e opacidade do overlay */
+  background-color: rgba(15, 23, 42, 0.6); 
   transition: opacity 0.5s ease;
 }
 
@@ -259,7 +258,7 @@
 }
 
 .card-link {
-  color: #3b82f6; /* Primary color */
+  color: #3b82f6;
   font-weight: 600;
   background-color: white;
   padding: 0.75rem 3rem;
@@ -269,7 +268,7 @@
 }
 
 .card-link:hover {
-  background-color: #e5e7eb; /* Light gray hover */
+  background-color: #e5e7eb; 
 }
 
 .card-icons {
@@ -288,7 +287,7 @@
 .card-content {
   width: 285px;
   height: 550px;
-  background-color: #f3f4f6; /* Light gray background */
+  background-color: #f3f4f6; 
   position: relative;
 }
 
@@ -305,11 +304,11 @@
 }
 
 .new-badge {
-  background-color: #22c55e; /* Green */
+  background-color: #22c55e;
 }
 
 .discount-badge {
-  background-color: #ef4444; /* Red */
+  background-color: #ef4444; 
 }
 
 .image-container {
@@ -334,7 +333,7 @@
 }
 
 .product-description {
-  color: #6b7280; /* Secondary text color */
+  color: #6b7280; 
   margin-bottom: 0.5rem;
 }
 
@@ -349,7 +348,7 @@
 }
 
 .original-price {
-  color: #6b7280; /* Secondary text color */
+  color: #6b7280;
   text-decoration: line-through;
 }
 
@@ -360,9 +359,9 @@
 .advantages-section {
   display: flex;
   justify-content: center;
-  gap: 3.5rem; /* Equivalente a gap-14 */
-  background-color: #f9f1e7; /* Substitua pela cor equivalente a bg-secondary-200 */
-  padding: 6rem 0; /* Equivalente a py-24 */
+  gap: 3.5rem; 
+  background-color: #f9f1e7; 
+  padding: 6rem 0; 
 }
 
 /* filterModal */
@@ -379,7 +378,7 @@
   padding: 0.5rem;
   transition: background-color 0.3s;
   cursor: pointer;
-  background-color: transparent; /* Define o background transparente */
+  background-color: transparent; 
   border: none;
 
 }
@@ -439,8 +438,8 @@
   position: fixed;
   top: 1rem;
   right: 1rem;
-  background-color: #c6f6d5; /* Verde claro */
-  color: #22543d; /* Verde escuro */
+  background-color: #c6f6d5; 
+  color: #22543d; 
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -511,7 +510,7 @@
 }
 
 .footer-text {
-  color: #6b7280; /* Substitua pela cor equivalente a "text-secondaryText" */
+  color: #6b7280; 
 }
 
 .footer-links {
@@ -521,7 +520,7 @@
 }
 
 .footer-heading {
-  color: #6b7280; /* Cor do texto secundário */
+  color: #6b7280; 
 }
 
 .footer-link {

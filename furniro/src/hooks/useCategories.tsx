@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCategories } from "../api/category";
+import { getCategories } from "../apiConfig/category";
 import { Category } from "../interface/Category";
 import { UseCategoriesResult } from "../interface/UseCategoriesResponse";
 export const useCategories = (): UseCategoriesResult => {

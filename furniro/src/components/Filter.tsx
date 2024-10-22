@@ -15,7 +15,6 @@ const FilterModal: React.FC<FilterModalProps> = ({
 }: FilterModalProps) => {
   const { categories }: UseCategoriesResult = useCategories();
 
-  // Modal state management
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -32,7 +31,6 @@ const FilterModal: React.FC<FilterModalProps> = ({
     };
   }, []);
 
-  // Form state management
   const [formData, setFormData] = useState<ModalFilterData>({
     category: "",
     maxPrice: "",
