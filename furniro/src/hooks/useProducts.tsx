@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { UseProductsResult } from "../interface/UseProductsResponse";
 import { Product } from "../interface/Product";
-import { getProducts } from "../api/products";
+import { getProducts } from "../apiConfig/products";
 import { FetchProductsParams } from "../interface/FetchProductsParams";
 
 export const useProducts = ({

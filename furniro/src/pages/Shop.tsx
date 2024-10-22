@@ -7,11 +7,10 @@ import { Link, useLocation } from "react-router-dom";
 import arrowIcon from "../assets/icon/arrow-down-alt2.svg";
 import gridRoundIcon from "../assets/icon/grid-big-round.svg";
 import viewListIcon from "../assets/icon/view-list.svg";
-import ApplyBtn from "../components/ApplyBtn";
-import FilterModal from "../components/FilterModal";
+import FilterModal from "../components/Filter";
 import { ModalFilterData } from "../interface/ModalFilterData";
 import { useCategoryById } from "../hooks/useCategoryById";
-import "./shop.css"; // Import your CSS file
+import "./shop.css"; 
 
 interface FormData {
   showCount: number;
@@ -24,11 +23,11 @@ const Shop: React.FC = () => {
   const [isNew, setIsNew] = useState<boolean | undefined>(false);
   const [category, setCategory] = useState<number | undefined>(location.state);
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
-  const [limit, setLimit] = useState<number>(16); // Quantidade de produtos por página
+  const [limit, setLimit] = useState<number>(16); 
   const [sortBy, setSortBy] = useState<string>("");
   const [sortDirection, setSortDirection] = useState<string>("DESC");
-  const [currentPage, setCurrentPage] = useState<number>(1); // Estado para página atual
-  const [totalResults, setTotalResults] = useState<number>(32); // Suponha 32 resultados totais, pode ser atualizado pela API
+  const [currentPage, setCurrentPage] = useState<number>(1); 
+  const [totalResults, setTotalResults] = useState<number>(32); 
 
   const categoryName = useCategoryById(category?.toString());
 
@@ -51,7 +50,7 @@ const Shop: React.FC = () => {
 
   useEffect(() => {
     const { showCount, sortBy } = formData;
-    setLimit(showCount); // Atualiza o limite conforme o formulário
+    setLimit(showCount); 
 
     if (sortBy === "az") {
       setSortBy("name");
@@ -167,7 +166,7 @@ const Shop: React.FC = () => {
         category={category}
         maxPrice={maxPrice}
         limit={limit}
-        page={currentPage} // Adiciona a página ao componente
+        page={currentPage} 
         sortBy={sortBy}
         sortDirection={sortDirection}
       />

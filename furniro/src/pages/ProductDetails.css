@@ -16,11 +16,11 @@
   }
 
   .breadcrumb span {
-    margin-right: 10px; /* Ajuste conforme necessário */
+    margin-right: 10px; 
   }
   
   .breadcrumb img {
-    margin: 0 10px; /* Ajuste conforme necessário */
+    margin: 0 10px; 
   }
   
   .product-details {
@@ -176,29 +176,29 @@
   
   .product-meta {
     display: flex;
-    align-items: center; /* Alinhar os itens verticalmente no centro */
+    align-items: center; 
     margin-bottom: 2rem;
-    gap: 2rem; /* Espaçamento entre os itens */
+    gap: 2rem; 
   }
 
   .product-meta span {
-    color: #A0AEC0; /* Cor cinza clarinho */
+    color: #A0AEC0; 
     margin-bottom: 10px;
 }
   
   .meta-left,
   .meta-right {
     display: flex;
-    flex-direction: column; /* Organiza os itens verticalmente */
+    flex-direction: column; 
   }
   
   .meta-right {
-    align-items: flex-start; /* Alinha os itens à esquerda */
+    align-items: flex-start; 
   }
   
   .social-icons {
     display: flex;
-    gap: 0.5rem; /* Espaçamento entre os ícones sociais */
+    gap: 0.5rem; 
   }
   
   .product-description-section {

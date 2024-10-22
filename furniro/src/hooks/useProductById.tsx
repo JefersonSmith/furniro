@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { UseProductByIdResult } from "../interface/UseProductByIdResponde";
 import { Product } from "../interface/Product";
-import { fetchProductById } from "../api/products";
+import { fetchProductById } from "../apiConfig/products";
 
 export const useProductById = (id: string | undefined): UseProductByIdResult => {
   const [product, setProduct] = useState<Product>();

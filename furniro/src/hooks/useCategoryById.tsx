@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Category } from "../interface/Category";
 import { UseCategoryByIdResult } from "../interface/UseCategoryByIdResponse";
-import { fetchCategoryById } from "../api/category";
+import { fetchCategoryById } from "../apiConfig/category";
 export const useCategoryById = (
   id: string | undefined
 ): UseCategoryByIdResult => {
