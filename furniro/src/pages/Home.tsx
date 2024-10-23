@@ -13,7 +13,7 @@ const Home: React.FC = () => {
       <HeaderHome />
       <CategorySection />
       <h2 className="products-heading">Our Products</h2>
-      <ProductsSection limit={8} />
+      <ProductsSection limit={8} isHomePage={true} />
       <div className="show-more-container">
         <Link className="load-more-button" to={"/shop"}>
           Show More
@@ -24,4 +24,5 @@ const Home: React.FC = () => {
     </div>
   );
 };
+
 export default Home;
