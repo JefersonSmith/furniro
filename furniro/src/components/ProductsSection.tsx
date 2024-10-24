@@ -13,6 +13,7 @@ interface ProductSectionProps {
   maxPrice?: number;
   sortBy?: string;
   sortDirection?: string;
+  isHomePage?: boolean; // Nova prop para identificar a Home
 }
 
 const ProductsSection: React.FC<ProductSectionProps> = (
@@ -20,6 +21,11 @@ const ProductsSection: React.FC<ProductSectionProps> = (
 ) => {
   const { products, loading, error } = useProducts(props);
   
+  // Ordena produtos com desconto primeiro, apenas na Home
+  const sortedProducts = props.isHomePage
+    ? [...products].sort((a, b) => (b.discount_percent || 0) - (a.discount_percent || 0))
+    : products;
+
   return (
     <div className="products-section">
       <div className="products-grid">
@@ -30,7 +36,7 @@ const ProductsSection: React.FC<ProductSectionProps> = (
         ) : error ? (
           <p>An error has occurred! Please reload the page</p>
         ) : (
-          products.map((product) => (
+          sortedProducts.map((product) => (
             <CardProduct
               key={product.id}
               id={product.id}
