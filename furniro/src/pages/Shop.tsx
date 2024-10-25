@@ -87,6 +87,12 @@ const Shop: React.FC = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
   const totalPages = Math.ceil(totalResults / limit);
 
   return (
@@ -183,6 +189,13 @@ const Shop: React.FC = () => {
             {index + 1}
           </button>
         ))}
+        <button 
+          className="pagination-button next-button" 
+          onClick={handleNextPage} 
+          disabled={currentPage >= totalPages}
+        >
+          Next
+        </button>
       </div>
 
       <AdvantageSection />
