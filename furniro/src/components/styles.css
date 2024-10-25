@@ -112,21 +112,13 @@
 .advantage {
   display: flex;
   gap: 1rem;
+  margin-right: 70px;
 }
 
 .advantage-icon {
   width: 50px; 
 }
 
-.advantage-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.advantage-title {
-  font-weight: 600;
-  font-size: 2rem; 
-}
 
 .advantage-subtitle {
   font-size: 1.25rem; 
