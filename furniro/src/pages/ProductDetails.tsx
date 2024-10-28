@@ -11,7 +11,7 @@ import linkedinIcon from "../assets/icon/icons_linkedin-box-fill.svg";
 import twitterIcon from "../assets/icon/icon_twitter.svg";
 import ProductsSection from "../components/ProductsSection";
 import { useCategoryById } from "../hooks/useCategoryById";
-import './ProductDetails.css'; // Arquivo de estilos
+import './ProductDetails.css'; 
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
