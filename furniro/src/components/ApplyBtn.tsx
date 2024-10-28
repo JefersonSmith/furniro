@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css'; // Importando o CSS
+import './styles.css'; 
 
 interface ApplyBtnProps {
   handleSubmit: (event: React.FormEvent) => void;

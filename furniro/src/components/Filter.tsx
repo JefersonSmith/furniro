@@ -58,13 +58,13 @@ const FilterModal: React.FC<FilterModalProps> = ({
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
   
-    // Não converter o ID da categoria para o nome, mas enviar o ID diretamente
+    
     const updatedFormData = {
       ...formData,
-      category: formData.category,  // Mantém o ID da categoria
+      category: formData.category,  
     };
   
-    onUpdate(updatedFormData); // Envia o ID da categoria
+    onUpdate(updatedFormData); 
   };
 
   return (

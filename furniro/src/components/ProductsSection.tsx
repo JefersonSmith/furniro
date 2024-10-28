@@ -13,7 +13,7 @@ interface ProductSectionProps {
   maxPrice?: number;
   sortBy?: string;
   sortDirection?: string;
-  isHomePage?: boolean; // Nova prop para identificar a Home
+  isHomePage?: boolean; 
 }
 
 const ProductsSection: React.FC<ProductSectionProps> = (
