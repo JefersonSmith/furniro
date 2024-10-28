@@ -2,7 +2,6 @@ import { FetchProductsParams } from "../interface/FetchProductsParams";
 import { Product } from "../interface/Product";
 import { API } from "./api";
 
-// Defina a interface para o retorno paginado
 interface PaginatedProductsResponse {
   results: number;
   startIndex: number;
@@ -12,7 +11,7 @@ interface PaginatedProductsResponse {
 
 export const getProducts = async (
   params: FetchProductsParams
-): Promise<PaginatedProductsResponse> => {  // Mudança para o retorno paginado
+): Promise<PaginatedProductsResponse> => {  
   const queryParams: string[] = [];
   const {
     page,
@@ -53,8 +52,8 @@ export const getProducts = async (
   const endPoint = `/product?${queryParams.join("&")}`;
 
   try {
-    const response = await API.get<PaginatedProductsResponse>(endPoint); // Mudança para tratar a resposta paginada
-    return response.data; // Retorna os dados completos de paginação e produtos
+    const response = await API.get<PaginatedProductsResponse>(endPoint); 
+    return response.data; 
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error("Error fetching products:", error.message);
@@ -66,20 +65,6 @@ export const getProducts = async (
   }
 };
 
-export const getProductById = async (id: number): Promise<Product> => {
-  try {
-    const response = await API.get<Product>(`/product/${id}`);
-    return response.data;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(`Error fetching product by ID ${id}:`, error.message);
-      throw error;
-    } else {
-      console.error(`Unknown error fetching product by ID ${id}.`);
-      throw new Error("An unknown error occurred while fetching the product.");
-    }
-  }
-};
 
 export const fetchProductById = async (id: string | undefined): Promise<Product> => {
   try {

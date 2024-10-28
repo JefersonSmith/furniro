@@ -33,7 +33,6 @@ export const useProducts = ({
           sortDirection,
         });
 
-        // Agora aplicamos slice no array de products dentro de data
         setProducts(data.products.slice(0, limit)); // Limita o número de produtos de acordo com 'limit'
 
         setLoading(false);
